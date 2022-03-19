@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+@section('links')
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">        
+@show
     <title>App name - @yield('title', 'shop')</title>
 </head>
 <body>
@@ -12,9 +14,16 @@
     @section('header')
         <header>
             <nav class="menu_right">
-                <a href="#">Home</a>
-                <a href="#">Catalog</a>
+                <a href="/">Home</a>
+                <a href="/catalog">Catalog</a>
             </nav>
+
+            <nav class="menu_left">
+                <a href="/basket">Basket</a>
+                <a href="#">register</a>
+                <a href="#">sign-up</a>
+            </nav>
+
             <div class="search">
                 <form action="" method="POST">
                     @csrf
@@ -24,11 +33,6 @@
                     </button>
                 </form>
             </div>
-            <nav class="menu_left">
-                <a href="#">Basket</a>
-                <a href="#">register</a>
-                <a href="#">sign-up</a>
-            </nav>
         </header>
    @show
     

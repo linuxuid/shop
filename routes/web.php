@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BasketController;
 use App\Http\Controllers\HomePageController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,4 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
+ * home directory
+ */
 Route::get('/', [HomePageController::class, 'index']);
+Route::get('/catalog', [HomePageController::class, 'catalog']);
+Route::get('/catalog/subcatalog/{id}', [HomePageController::class, 'subCatalog']);
+
+/*
+ * basket directory
+ */
+Route::get('/basket', [BasketController::class, 'index'])->name('basket.index');
+Route::get('/basket/checkout', [BasketController::class, 'create'])->name('basket.checkout');
+Route::get('/basket/add/{id}', [BasketController::class, 'store'])->where('id', '[0-9]+')->name('basket.add');

@@ -4,24 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Category extends Model
+class Basket extends Model
 {
     use HasFactory;
 
-    protected $table = 'categories';
+    protected $table = 'baskets';
 
     protected $primaryKey = 'id';
 
-    protected $guarded = [];
-
-    /*
-     * hasMany realationship with product table
-     */ 
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->BelongsToMany(Product::class)->withPivot('quantity');
     }
-
-
 }
