@@ -21,10 +21,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomePageController::class, 'index']);
 Route::get('/catalog', [HomePageController::class, 'catalog']);
 Route::get('/catalog/subcatalog/{id}', [HomePageController::class, 'subCatalog']);
+Route::get('/catalog/subcatalog/{id}/{id_product}', [HomePageController::class, 'products']);
 
 /*
  * basket directory
  */
 Route::get('/basket', [BasketController::class, 'index'])->name('basket.index');
 Route::get('/basket/checkout', [BasketController::class, 'create'])->name('basket.checkout');
-Route::get('/basket/add/{id}', [BasketController::class, 'store'])->where('id', '[0-9]+')->name('basket.add');
+Route::post('/basket/add/{id}', [BasketController::class, 'store'])->where('id', '[0-9]+')->name('basket.add');

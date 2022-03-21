@@ -24,7 +24,12 @@
             <span>{{ $category->slug }}</span>
             <img src="https://via.placeholder.com/400x120" alt="" class="img-fluid">
             <form action="/catalog/subcatalog/{{ $category->id }}/{{ $category->id }}">
-                <button>
+                <button class="basket">
+                    add to basket
+                </button>
+            </form>
+            <form action="/catalog/subcatalog/{{ $category->id }}/{{ $category->id }}">
+                <button class="follow">
                     Follow
                 </button>
             </form>

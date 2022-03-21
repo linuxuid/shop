@@ -1,0 +1,18 @@
+.content form {
+    display: flex;
+}
+
+.content form .basket {
+    background-color: green;
+    width: 150px;
+}
+
+.content form .basket:hover {
+    color: red;
+}
+
+.content form .follow {
+    margin-left: 300px;
+    position: relative;
+    bottom: 43px;
+}

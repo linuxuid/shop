@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Product;
 
 class HomePageController extends Controller
 {
@@ -27,6 +28,15 @@ class HomePageController extends Controller
 
         return view('home.subcatalog', [
             'categories' => $category
+        ]);
+    }
+
+    public function products($id)
+    {
+        $product = Product::find($id);
+
+        return view('home.products',[
+            'products' => $product
         ]);
     }
 }
