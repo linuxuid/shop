@@ -2,10 +2,12 @@
     text-align: left;
 }
 
-.content form button {
+.content form .product_basket {
     width: 400px;
     background-color: green;
     margin-top: 10px;
+    position: relative;
+    right: 123px;
 }
 
 .content .price {

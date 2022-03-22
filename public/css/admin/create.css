@@ -1,0 +1,13 @@
+.content .admin_top {
+    background: rgb(148, 255, 148);
+    width: 100%;
+    position: relative;
+    right: 20px;
+    padding: 20px;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset; 
+}
+
+.content .admin_top p {
+    font-size: 18px;
+    color: green;
+}

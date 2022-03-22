@@ -23,7 +23,7 @@ header .menu_right, header .menu_left, header .search form {
 
 header .menu_right a, header .menu_left a{
     text-decoration: none;
-    color: blue;
+    color: rgb(87, 87, 250);
     margin: 10px;
 }
 
@@ -31,36 +31,60 @@ header .menu_right a:hover, header .menu_left a:hover {
     color: red;
     text-decoration: underline;
 }
+
+/* auth */
+header .menu_right .welcome_back {
+    margin-left: 10px;
+    color: white;
+}
+
+header .menu_right .welcome_back .user {
+    color: red;
+}
+
+
+header .menu_right .logout {
+    position: relative;
+    left: 490px;
+    bottom: 20px;
+}
+
+header .menu_right .logout form button {
+    background: rgb(53, 53, 53);
+    border: none;
+    color: rgb(87, 87, 250);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+header .menu_right .logout form button:hover {
+    color: red;
+    transform: 1s;
+    text-decoration: underline;
+}
+
 /* 
 header .menu_right {
     margin-right: 40px;
 } */
 
-header .menu_left {
-    margin-right: 480px;
-}
-
-header .search {
-    position: relative;
-    bottom: 10px;
-}
-
-header .search form input {
+header  .menu_left .search form input {
     width: 150px;
     height: 45px;
     border: none;
 }
 
-header .search form button {
+header .menu_left .search form button {
     border: none;
     height: 48px;
     cursor: pointer;
 }
 
-header .search form button:hover {
+header .menu_left .search form button:hover {
     background-color: aqua;
     color: rebeccapurple;
 }
+
 
 
 main {

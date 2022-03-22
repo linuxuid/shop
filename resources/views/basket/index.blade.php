@@ -6,56 +6,81 @@
 @show
 
 @section('content')
+
 <main>
     <div class="left">
         {{-- left sidebar --}}
     </div>
-{{-- START PHP CODE --}}
-    @php
-        $products = App\Models\Product::all()
-    @endphp
-{{-- END PHP CODE --}}
-    <div class="content">
-        <h1>Your shopping cart</h1>
+
+<div class="content">
+    <h1>Your shopping card</h1>
     @if (count($products))
         @php
             $basketCost = 0;
         @endphp
-
-        <table>
+        <table class="table_basket">
             <tr>
                 <th>№</th>
                 <th>Name</th>
                 <th>Price</th>
-                <th>Quantity</th>
-                <th>Total price</th>
+                <th>quantity</th>
+                <th>total cost</th>
+                <th>change quantity</th>
+                <th>delete</th>
             </tr>
-        @foreach ($products as $product)
-            @php
-                $price = $product->price;
-                $quantity = $product->pivot->quantity;
-                $cost = $price * $quantity;
-                $basketcost += $cost;
-            @endphp
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ number_format($price, 2, '.', '') }}</td>
-                                <td>
-                                    <i></i>
-                                    
-                                    <i></i>
-                                </td>
-                                <td>{{ number_format($cost, 2, '.', '') }}</td>
-                            </tr>
-        @endforeach  
-        <tr>
-            <th colspan="4" class="text-right">Итого</th>
-            <th>{{ number_format($basketCost, 2, '.', '') }}</th>
-        </tr>
-    </table>
-@else
-    <p>Ваша корзина пуста</p>
-@endif  
+            @foreach($products as $product)
+                @php
+                    $itemPrice = $product->price;
+                    $itemQuantity =  $product->pivot->quantity;
+                    $itemCost = $itemPrice * $itemQuantity;
+                    $basketCost = $basketCost + $itemCost;
+                @endphp
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>
+                        <span>{{ $product->slug }}</span>
+                    </td>
+                    <td>{{ number_format($itemPrice, 2, '.', '') }}$</td>
+                    <td>
+                        <i></i>
+                        <span>{{ $itemQuantity }}</span>
+                        <i></i>
+                    </td>
+                    <td>{{ number_format($itemCost, 2, '.', '') }}$</td>
+                    {{-- START FORM QUANTITY--}}
+                    <td>
+                        <form action="{{ route('basket.minus', ['id' => $product->id]) }}" method="POST">
+                            @csrf
+                        <button class="minus_btn"> 
+                            -
+                        </button>     
+                        </form>
+
+                        <form action="{{ route('basket.plus', ['id' => $product->id]) }}" method="POST">
+                            @csrf
+                        <button class="plus_btn">
+                            +
+                        </button>
+                        </form>
+                    </td>
+                    {{-- END FORM QUANTITY--}}
+                    <td>
+                        <form action="{{ route('basket.remove', ['id' =>$product->id]) }}" method="POST">
+                            @csrf
+                        <button class="remove_btn">
+                            &#8855;
+                        </button>    
+                    </td>
+                </tr>
+            @endforeach
+            <tr>
+                <th>Total</th>
+                <th>{{ number_format($basketCost, 2, '.', '') }}$</th>
+            </tr>
+        </table>
+    @else
+        <p>Your shopping cart is empty</p>
+    @endif
     </div>
 </main>
 @endsection

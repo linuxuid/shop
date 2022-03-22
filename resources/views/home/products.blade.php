@@ -23,7 +23,7 @@
                 Quantity:
             </label>
             <input type="number" name="quantity" id="input-quantity" value="1">
-            <button>
+            <button class="product_basket">
                 add to basket
             </button>
         </form>
