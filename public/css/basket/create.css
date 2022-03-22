@@ -1,0 +1,56 @@
+.content .order_top {
+    text-align: center;
+    border-bottom: 1px solid gray;
+}
+
+.content .order {
+    width: 200px;
+    margin: 50px auto;
+    border: 1px solid black;
+    padding-right: 190px;
+    padding-left: 80px;
+    padding-top: 100px;
+    padding-bottom: 120px;
+    display: flex;
+    flex-direction: column;
+    border: none;
+    /* background: rgb(75, 227, 253); */
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.content .order label {
+    font-size: 18px;
+    margin-top: 30px;
+    margin-bottom: 2px;
+}
+
+.content .order input {
+    width: 320px;
+    height: 50px;
+    border:none;
+    background-color: rgb(177, 255, 245);
+}
+
+.content .order input::placeholder{
+    font-size: 17px;
+}
+
+.content .order_error {
+    color: red;
+    font-size: 14px;
+}
+
+.content .order button {
+    margin-top: 25px;
+    display: block;
+    width: 320px;
+    height: 55px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.content .order button:hover {
+    background: rgb(116, 223, 223);
+    transition: 1.3s;
+}

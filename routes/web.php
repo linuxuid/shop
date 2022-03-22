@@ -29,9 +29,11 @@ Route::get('/catalog/subcatalog/{id}/{id_product}', [HomePageController::class, 
 /*
  * basket directory
  */
-Route::get('/basket', [BasketController::class, 'index'])->name('basket.index');
-Route::get('/basket/checkout', [BasketController::class, 'create'])->name('basket.checkout');
-Route::post('/basket/add/{id}', [BasketController::class, 'store'])->where('id', '[0-9]+')->name('basket.add');
+Route::get('/basket', [BasketController::class, 'index'])->middleware('check')->name('basket.index');
+Route::get('/basket/checkout', [BasketController::class, 'create'])->middleware('check')->name('basket.checkout');
+Route::get('/basket/success', [BasketController::class, 'storeOrder'])->middleware('check')->name('basket.success');
+Route::post('/basket/add/{id}', [BasketController::class, 'store'])->middleware('check')->where('id', '[0-9]+')->name('basket.add');
+Route::post('/basket/createorder', [BasketController::class, 'createOrder'])->middleware('check')->name('create.order');
 
 // in order to change quantity of the product
 Route::post('/basket/plus/{id}', [BasketController::class, 'plus'])->name('basket.plus');

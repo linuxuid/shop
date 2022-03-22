@@ -61,3 +61,24 @@
     background-color: red;
     cursor: pointer;
 }
+
+.content .make_order {
+    width: 130px;
+    height: 50px;
+    margin-top: 50px;
+}
+
+.content .make_order a {
+    background: rgb(31, 109, 255);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.content .make_order a:hover {
+    color: red;
+    box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
+}

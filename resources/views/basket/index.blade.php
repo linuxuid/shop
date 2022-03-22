@@ -78,6 +78,9 @@
                 <th>{{ number_format($basketCost, 2, '.', '') }}$</th>
             </tr>
         </table>
+        <div class="make_order">
+            <a href="/basket/checkout">Make an order</a>
+        </div>
     @else
         <p>Your shopping cart is empty</p>
     @endif

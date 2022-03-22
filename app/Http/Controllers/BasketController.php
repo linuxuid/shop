@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Basket;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Cookie;
@@ -22,10 +23,51 @@ class BasketController extends Controller
         
     }
 
+    /*
+     * BASKET CREATE ORDERS
+     */ 
     public function create()
     {
         return view('basket.create');
     }
+
+    public function createOrder(Request $request)
+    {
+        $attributes = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|max:255',
+            'phone' => 'required|max:255',
+            'address' => 'required|max:255'
+        ]);
+
+        $basket = new Basket();
+        $user_id = auth()->check() ? auth()->user()->id : null;
+        $order = Order::create(
+            $attributes + ['amount' => $basket->getAmount(), 'user_id' => $user_id]
+        );
+
+        foreach($basket->products as $product){
+            $order->items()->create([
+                'product_id' => $product->id,
+                'name' => $product->name,
+                'price' => $product->price,
+                'quantity' => $product->pivot->quantity,
+                'cost' => $product->price * $product->pivot->quantity,
+            ]);
+        }
+
+        $basket->delete();
+
+        return redirect()->route('basket.success')->with('success', 'your order has been successfully placed');
+    }
+
+    public function storeOrder()
+    {
+        return view('basket.store');
+    }
+    /*
+     * BASKET END CREATE ORDERS
+     */ 
 
     public function store( Request $request, $id)
     {
