@@ -7,11 +7,7 @@
 
 @section('content')    
 <main>
-    <div class="left">
-        {{-- left sidebar --}}
-    </div>
-
-    <div class="content">
+   <div class="content">
         <form class="auth" action="{{ route('session.store') }}" method="POST">
             @csrf
         <span class="top">Sign Up</span> 

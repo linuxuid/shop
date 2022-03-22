@@ -7,10 +7,6 @@
 
 @section('content')
 <main>
-    <div class="left">
-        {{-- left sidebar --}}
-    </div>
-
     <div class="content">
         <h1 class="order_top">make an order</h1>
         <form class="order" method="POST" action="{{ route('create.order') }}">

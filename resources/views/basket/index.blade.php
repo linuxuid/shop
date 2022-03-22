@@ -6,12 +6,7 @@
 @show
 
 @section('content')
-
 <main>
-    <div class="left">
-        {{-- left sidebar --}}
-    </div>
-
 <div class="content">
     <h1>Your shopping card</h1>
     @if (count($products))
