@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BasketController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
@@ -58,4 +60,21 @@ Route::post('logout', [SessionController::class, 'destroy'])->name('session.dest
 /*
  * Admin panel controll
  */ 
-Route::get('/control/create', [AdminController::class, 'create'])->middleware('admin')->name('admin.create');
+Route::get('/control/index', [CategoryController::class, 'index'])->middleware('admin')->name('admin.index');
+
+Route::get('/control/category/create', [CategoryController::class, 'create'])->middleware('admin')->name('admin.create');
+Route::post('/control/category/create', [CategoryController::class, 'store'])->middleware('admin')->name('admin.store');
+
+// Route::get('/control/edit', [AdminController::class, 'show'])->middleware('admin')->name('admin.edit');
+
+// category create
+Route::get('/control/category/edit/{id}', [CategoryController::class, 'edit'])->middleware('admin')->name('admin.show');
+Route::post('/control/edit/{id}', [CategoryController::class, 'editStore'])->middleware('admin')->name('admin.edit.store');
+Route::post('/control/delete/{id}', [CategoryController::class, 'destroy'])->middleware('admin')->name('admin.destroy');
+
+// product create
+Route::get('/control/product/create', [ProductController::class, 'create'])->middleware('admin')->name('admin.product.create');
+Route::post('/control/product/create', [ProductController::class, 'store'])->middleware('admin')->name('admin.product.store');
+
+Route::get('/control/product/edit/{id}', [ProductController::class, 'edit'])->middleware('admin')->name('admin.product.edit');
+Route::post('/control/product/edit/{id}', [ProductController::class, 'update'])->middleware('admin')->name('admin.product.edit.store');

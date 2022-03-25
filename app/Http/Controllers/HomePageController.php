@@ -10,6 +10,14 @@ class HomePageController extends Controller
 {
     public function index()
     {
+        $category = Category::latest();
+
+        if(request('search')){
+            $category
+            ->where('name', 'like', '%' . request('search'). '%')
+            ->orWhere('slug', 'like', '%' . request('search') . '%');
+        }
+
         return view('home.index');
     }
 

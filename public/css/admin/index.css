@@ -1,0 +1,88 @@
+.content .admin_top {
+    background: rgb(148, 255, 148);
+    width: 100%;
+    position: relative;
+    right: 20px;
+    padding: 20px;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset; 
+}
+
+.content .admin_top p {
+    font-size: 18px;
+    color: green;
+}
+
+.content .admin_links {
+    margin-top: 30px;
+}
+
+.content .admin_link {
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: rgb(84, 84, 255);
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.content .admin_link:hover {
+    color: red;
+    background: aqua;
+    transition: 0.5s;
+}
+
+.content .admin_products {
+    position: relative;
+    top: 30px;
+    margin: 9px;
+}
+
+.content .admin_products a {
+    background: rgb(28, 218, 232);
+}
+
+
+.content .all_categories h2{
+    color: black;
+    margin-top: 100px;
+}
+
+.content .all_categories{
+    margin-top: 50px;
+}
+
+.content .all_categories table {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.content .all_categories table {
+    background: white;
+    max-width: 100%;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.content .all_categories table th {
+    font-size: 15px;
+    font-weight: bold;
+    background: #b9c9fe;
+    border-top: 1px solid #bdc9f7;
+    color: #049;
+    padding: 10px 8px;
+}
+
+.content .all_categories table td {
+    border-bottom: 1px solid #ccc;
+    color: #669;
+    padding: 9px 8px;
+    transition: .3s linear;
+}
+
+.content .all_categories .remove_btn {
+    font-size: 25px;
+    background-color: red;
+    cursor: pointer;
+}

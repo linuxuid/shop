@@ -28,7 +28,6 @@
             </button>
         </form>
         <p>{{ $products->body }}</p>
-        <p>{{ $products->body }}</p>
     </div>
 </main>
 @endsection

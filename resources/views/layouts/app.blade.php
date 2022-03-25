@@ -55,7 +55,7 @@
                         </style>
                     {{-- IF ADMIN AUTH END STYLE --}}
 
-                <a href="{{ route('admin.create') }}">control panel</a>
+                <a href="{{ route('admin.index') }}">control panel</a>
             @endif
                 <div class="logout">
                     <form method="POST" action="{{ route('session.destroy') }}">
@@ -71,8 +71,7 @@
 
             <nav class="menu_left">
                 <div class="search">
-                    <form action="" method="POST">
-                        @csrf
+                    <form action="" method="GET">
                         <input name="search" type="text" placeholder="search...">
                         <button>
                             search!
