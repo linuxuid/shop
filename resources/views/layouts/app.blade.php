@@ -17,6 +17,7 @@
                 <a href="/">Home</a>
                 <a href="/catalog">Catalog</a>
                 <a href="/basket">Basket</a>
+                <a href="/index">My Profile</a>
                 {{-- IF NOT AUTH STAT STYLE --}}
                     <style>
                         header .menu_left {
@@ -49,7 +50,7 @@
                         <style>
                             header .menu_right .logout {
                                 position: relative;
-                                left: 485px;
+                                left: 600px;
                                 bottom: 20px;
                             }
                         </style>

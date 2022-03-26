@@ -83,10 +83,11 @@
     <div class="admin_links">  
         <a href="{{ route('admin.show', ['id' => 1]) }}" class="admin_link">EDIT CATEGORY</a>
         <a href="{{ route('admin.create') }}" class="admin_link">CREATE CATEGORY</a>
-    </div>
-    <div class="admin_products">
         <a href="{{ route('admin.product.edit', ['id' => 1]) }}" class="admin_link">EDIT PRODUCT</a>
         <a href="{{ route('admin.product.create') }}" class="admin_link">CREATE PRODUCT</a>
+    </div>
+    <div class="admin_products">
+        <a href="/control/users" class="admin_link">USERS LIST</a>
     </div>
 
     <div class="all_categories">

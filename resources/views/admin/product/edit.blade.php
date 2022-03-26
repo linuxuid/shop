@@ -11,8 +11,8 @@
 <main>
     <div class="left">
         <h2>Products:</h2>
-        @foreach (App\Models\Product::all() as $products)
-            <p><a href="{{ route('admin.product.edit', ['id' => $products->id]) }}">{{ $products->slug }}</a></p>
+        @foreach (App\Models\Product::all() as $product)
+            <p><a href="{{ route('admin.product.edit', ['id' => $product->id]) }}">{{ $product->slug }}</a></p>
         @endforeach
     </div>
 

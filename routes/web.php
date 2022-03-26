@@ -5,8 +5,12 @@ use App\Http\Controllers\BasketController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsersController;
+use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +24,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/**
+ * error auth
+ */
+Route::get('/error', function(){
+    return view('error.auth');
+})->name('error');
+
 /*
  * home directory
  */
@@ -31,11 +42,11 @@ Route::get('/catalog/subcatalog/{id}/{id_product}', [HomePageController::class, 
 /*
  * basket directory
  */
-Route::get('/basket', [BasketController::class, 'index'])->middleware('check')->name('basket.index');
-Route::get('/basket/checkout', [BasketController::class, 'create'])->middleware('check')->name('basket.checkout');
-Route::get('/basket/success', [BasketController::class, 'storeOrder'])->middleware('check')->name('basket.success');
-Route::post('/basket/add/{id}', [BasketController::class, 'store'])->middleware('check')->where('id', '[0-9]+')->name('basket.add');
-Route::post('/basket/createorder', [BasketController::class, 'createOrder'])->middleware('check')->name('create.order');
+Route::get('/basket', [BasketController::class, 'index'])->middleware('auth')->name('basket.index');
+Route::get('/basket/checkout', [BasketController::class, 'create'])->middleware('auth')->name('basket.checkout');
+Route::get('/basket/success', [BasketController::class, 'storeOrder'])->middleware('auth')->name('basket.success');
+Route::post('/basket/add/{id}', [BasketController::class, 'store'])->middleware('auth')->where('id', '[0-9]+')->name('basket.add');
+Route::post('/basket/createorder', [BasketController::class, 'createOrder'])->middleware('auth')->name('create.order');
 
 // in order to change quantity of the product
 Route::post('/basket/plus/{id}', [BasketController::class, 'plus'])->name('basket.plus');
@@ -60,21 +71,33 @@ Route::post('logout', [SessionController::class, 'destroy'])->name('session.dest
 /*
  * Admin panel controll
  */ 
-Route::get('/control/index', [CategoryController::class, 'index'])->middleware('admin')->name('admin.index');
+Route::get('/control/index', [CategoryController::class, 'index'])->middleware('auth','admin')->name('admin.index');
 
-Route::get('/control/category/create', [CategoryController::class, 'create'])->middleware('admin')->name('admin.create');
-Route::post('/control/category/create', [CategoryController::class, 'store'])->middleware('admin')->name('admin.store');
+Route::get('/control/category/create', [CategoryController::class, 'create'])->middleware('auth','admin')->name('admin.create');
+Route::post('/control/category/create', [CategoryController::class, 'store'])->middleware('auth','admin')->name('admin.store');
 
 // Route::get('/control/edit', [AdminController::class, 'show'])->middleware('admin')->name('admin.edit');
 
 // category create
-Route::get('/control/category/edit/{id}', [CategoryController::class, 'edit'])->middleware('admin')->name('admin.show');
-Route::post('/control/edit/{id}', [CategoryController::class, 'editStore'])->middleware('admin')->name('admin.edit.store');
-Route::post('/control/delete/{id}', [CategoryController::class, 'destroy'])->middleware('admin')->name('admin.destroy');
+Route::get('/control/category/edit/{id}', [CategoryController::class, 'edit'])->middleware('auth','admin')->name('admin.show');
+Route::post('/control/edit/{id}', [CategoryController::class, 'editStore'])->middleware('auth','admin')->name('admin.edit.store');
+Route::post('/control/delete/{id}', [CategoryController::class, 'destroy'])->middleware('auth','admin')->name('admin.destroy');
 
 // product create
-Route::get('/control/product/create', [ProductController::class, 'create'])->middleware('admin')->name('admin.product.create');
-Route::post('/control/product/create', [ProductController::class, 'store'])->middleware('admin')->name('admin.product.store');
+Route::get('/control/product/create', [ProductController::class, 'create'])->middleware('auth','admin')->name('admin.product.create');
+Route::post('/control/product/create', [ProductController::class, 'store'])->middleware('auth','admin')->name('admin.product.store');
 
-Route::get('/control/product/edit/{id}', [ProductController::class, 'edit'])->middleware('admin')->name('admin.product.edit');
-Route::post('/control/product/edit/{id}', [ProductController::class, 'update'])->middleware('admin')->name('admin.product.edit.store');
+Route::get('/control/product/edit/{id}', [ProductController::class, 'edit'])->middleware('auth','admin')->name('admin.product.edit');
+Route::post('/control/product/edit/{id}', [ProductController::class, 'update'])->middleware('auth','admin')->name('admin.product.edit.store');
+
+
+//USERS LIST
+Route::resource('/control/users', UsersController::class)->middleware('auth','admin');
+
+// Personal Area
+Route::get('index', [ProfileController::class, 'index'])->middleware('auth')->name('personal.area');
+
+
+/**
+ * CRUD OPEARTIONS WITH PROFILES
+ */

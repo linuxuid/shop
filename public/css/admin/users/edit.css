@@ -1,0 +1,53 @@
+main .content .top h2 {
+    font-size: 30px;
+}
+
+main .content .users .admin_users {
+    margin-top: 50px;
+}
+
+main .content .users .admin_users label {
+    display: block;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+main .content .users .admin_users input {
+    width: 100%;
+    height: 45px;
+}
+
+main .content .users .admin_users input::placeholder {
+    font-size: 18px;
+}
+
+main .content .users .admin_users button {
+    box-sizing: border-box;
+    margin-top: 15px;
+    margin-left: 3.5px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgb(43, 135, 196);
+    color: white;
+    width: 100%;
+    padding: 20px;
+    border: none;
+}
+
+main .content .users .admin_users button:hover {
+    color: red;
+    background-color: aqua;
+    transition: 0.7s;
+}
+
+main .content .session p{
+    width: 98%;
+    background: #48ff48;
+    padding: 20px;
+    opacity: 0.8;
+    border-radius: 10px;
+    color: green;
+    font-size: 20px;
+    text-align: center;
+}
