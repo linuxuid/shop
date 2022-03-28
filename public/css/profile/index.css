@@ -1,3 +1,7 @@
+.content {
+    height: 900px;
+}
+
 .content h1 {
     font-size: 40px;
 }
@@ -7,5 +11,91 @@
 }
 
 .content p > span {
+    color: red;
+}
+
+.content form {
+    width: 200px;
+}
+
+.content input {
+    margin-bottom: 10px;
+    width: 300px;
+    height: 30px;
+}
+
+.content .btn a:first-child, .content .btn_profile a{
+    color: white;
+    background: rgb(56, 213, 56);
+    text-decoration: none;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.content .btn a:first-child:hover, .content .btn_profile a:hover {
+    color: red;
+}
+
+.content .btn_profile a {
+    float: right;
+    position: relative;
+    bottom: 10px;
+    right: 10px;
+}
+
+.content .add_profiles{
+    float: right
+}
+
+.content .add_profiles a {
+    color: white;
+    background: rgb(46, 137, 255);
+    text-decoration: none;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.content .add_profiles a:hover {
+    color: red;
+    background-color: aqua;
+    transition: 0.3s;
+}
+
+.content .profiles h2 {
+    font-size: 29px;
+}
+
+.content .profiles {
+    margin-top: 100px;
+}
+
+.content .profiles table{
+    border-collapse: collapse;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid black;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.content .profiles table thead {
+    background-color: #333;
+    color: white;
+    font-size: 1.20rem;
+    text-transform: uppercase;
+    letter-spacing: 2%;
+}
+
+.content .profiles table tbody td:hover {
+    background: rgb(94, 141, 235);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.content .empty {
+    font-size: 20px;
     color: red;
 }
