@@ -9,26 +9,30 @@
 @section('content')
 <main>
     <div class="left">
-        <h3>Directory catalog</h3>
-        <p>subcategory catalog</p>
-
-        <h3>Directory catalog</h3>
-        <p>subcategory catalog</p>
+        @foreach (App\Models\Category::all() as $item)
+        <h2>{{ $item->name }}</h2>
+        @foreach (App\Models\Product::all() as $product)
+            @if ($product->id == $item->id)
+            <p>{{ $product->slug }}</p>                
+            @endif
+    @endforeach
+    @endforeach    
     </div>
 
-    <div class="content">
+    <div class="content">  
         <h2>Categories</h2>
         <hr>
-    @foreach ($categories as $category)
-        <span>{{ $category->name }}</span>
-        <img src="https://via.placeholder.com/400x120" alt="" class="img-fluid">
-        <form action="/catalog/subcatalog/{{ $category->id }}">
-            <button>
-                Follow
-            </button>
-        </form>
-    @endforeach
-
+            @foreach ($categories as $category)
+            <div class="catalogs">
+            <span>{{ $category->slug }}</span>
+            <img src="img/unnamed.png" width="300px" alt="" class="img-fluid"> 
+                <form action="/catalog/subcatalog/{{ $category->id }}">
+                    <button>
+                        Follow
+                    </button>
+                </form> 
+            </div>
+            @endforeach
     </div>
 </main>
 @endsection

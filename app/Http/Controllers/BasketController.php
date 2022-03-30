@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Basket;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Profile;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Cookie;
 
@@ -26,7 +27,7 @@ class BasketController extends Controller
     /*
      * BASKET CREATE ORDERS
      */ 
-    public function create()
+    public function create(Request $request)
     {
         return view('basket.create');
     }

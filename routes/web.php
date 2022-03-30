@@ -106,6 +106,7 @@ Route::post('/index/create', [ProfileController::class, 'store'])->middleware('a
 // update profiles
 Route::get('/index/change/profile', [ProfileController::class, 'showProfile'])->middleware('auth')->name('personal.show.profile');
 Route::post('/index/change/profile', [ProfileController::class, 'updateProfileData'])->middleware('auth')->name('personal.show.profile.store');
+Route::post('/delete/{id}', [ProfileController::class, 'destroyProfile'])->middleware('auth')->name('personal.delete');
 
 /**
  * user data in profile

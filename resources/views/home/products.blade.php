@@ -15,7 +15,7 @@
 
     <div class="content">
         <h2>{{ $products->slug }}</h2>
-        <img src="https://via.placeholder.com/400x400" alt="" class="img-fluid">
+        <img src="/img/download.png" width="400px" height="400px" alt="" class="img-fluid">
         <span class="price">Price: {{ $products->price }}$</span>
         <form action="{{ route('basket.add', ['id' => $products->id]) }}" method="POST">
             @csrf

@@ -55,6 +55,11 @@
                 <a href="{{ route('personal.show.profile') }}">Change</a>
             </div>
             <h2>Your profile data:</h2>
+            <div class="delete">
+                @if (session()->has('success'))
+                    <p>your profile has been deleted</p>
+                @endif
+            </div>
             <table>
                 <tr>
                     <thead>
@@ -64,7 +69,6 @@
                         <th>phone</th>
                         <th>address</th>
                         <th>comment</th>
-                        <th>edit</th>
                         <th>delete</th>
                     </thead>
                 </tr>
@@ -78,6 +82,14 @@
                                 <td>{{ $item->phone }}</td>
                                 <td>{{ $item->address }}</td>
                                 <td>{{ $item->comment }}</td>
+                                <td>
+                                    <form class="delete_btn" action="{{ route('personal.delete', ['id' => $item->id]) }}" method="POST">
+                                        @csrf
+                                        <button>
+                                            &#8855;
+                                        </button>
+                                    </form>
+                                </td>
                             </tbody>
                         </tr>
                     @endif

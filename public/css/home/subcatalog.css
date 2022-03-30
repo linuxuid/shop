@@ -1,3 +1,7 @@
+main .left h2{
+    font-size: 25px;
+}
+
 .content form {
     display: flex;
 }

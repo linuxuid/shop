@@ -95,4 +95,13 @@ class ProfileController extends Controller
         $profile->update($request->all());
         return redirect()->route('personal.show.profile')->with('success', 'your user profile has been changed');
     }
+
+    public function destroyProfile($id)
+    {
+        $profile = Profile::find($id);
+
+        $profile->delete();
+
+        return redirect()->route('personal.area')->with('success', 'your profile has been deleted');
+    }
 }

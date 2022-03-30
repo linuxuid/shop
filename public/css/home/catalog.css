@@ -1,3 +1,8 @@
+.content .catalogs {
+   float: right;
+   width: 450px;
+}
+
 .content span {
     display: block;
     margin-top: 20px;
@@ -16,6 +21,8 @@
     cursor: pointer;
 }
 
-.content button:hover {
+.content .catalogs button:hover {
     color:red;
-}
+} 
+
+
