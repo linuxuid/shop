@@ -18,7 +18,7 @@
                 <a href="/catalog">Catalog</a>
                 <a href="/basket">Basket</a>
             @if(auth()->user())
-                <a href="/index/{{ auth()->user()->id }}">My Profile</a>
+                <a href="/index">My Profile</a>
             @else
                 <a href="/index">My Profile</a>
             @endif

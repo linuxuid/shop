@@ -52,7 +52,7 @@
                 <a href="{{ route('personal.create') }}">Add profile</a>
             </div>
             <div class="btn_profile">
-                <a href="{{ route('personal.show') }}">Change</a>
+                <a href="{{ route('personal.show.profile') }}">Change</a>
             </div>
             <h2>Your profile data:</h2>
             <table>
@@ -68,20 +68,27 @@
                         <th>delete</th>
                     </thead>
                 </tr>
-            @forelse ($users->profiles as $item)
-                <tr>
-                    <tbody>
-                        <td>{{ $item->title }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ $item->email }}</td>
-                        <td>{{ $item->phone }}</td>
-                        <td>{{ $item->address }}</td>
-                        <td>{{ $item->comment }}</td>
-                    </tr>
-            @empty
+                @forelse ($profile as $item)
+                     @if (auth()->user()->id == $item->user_id)
+                        <tr>
+                            <tbody>
+                                <td>{{ $item->title }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->phone }}</td>
+                                <td>{{ $item->address }}</td>
+                                <td>{{ $item->comment }}</td>
+                            </tbody>
+                        </tr>
+                    @endif
+                @empty
                 <p class="empty">You don't have any profiles</p>
-            @endforelse
-            </table>
+                @endforelse
+                </table>
+
+                
+
+          
 
             {{-- END PROFILE DATA --}}
         </div>

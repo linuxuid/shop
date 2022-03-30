@@ -3,6 +3,7 @@
 @section('links')
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">  
     <link rel="stylesheet" href="{{ asset('/css/admin/create.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/profile/showProfile.css') }}">
 @endsection
 
 @section('content')
@@ -14,12 +15,15 @@
                 <p>your profile has been added</p>
             @endif
         </div>
-
+        
         <form class="admin" action="{{ route('personal.store') }}" method="POST">
             @csrf
             {{-- USER_ID INPUT --}}
             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
             {{-- END USER_ID INPUT --}}
+            <div class="link_profiles">
+                <a href="{{ route('personal.show.profile') }}">Edit profile</a>
+            </div>
             <label for="title">
                 Title:
             </label>

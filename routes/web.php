@@ -94,12 +94,18 @@ Route::post('/control/product/edit/{id}', [ProductController::class, 'update'])-
 //USERS LIST
 Route::resource('/control/users', UsersController::class)->middleware('auth','admin');
 
-// Personal Area
-Route::get('index/{id}', [ProfileController::class, 'index'])->middleware('auth')->name('personal.area');
+/**
+ * About profiles
+ * */
+Route::get('index', [ProfileController::class, 'index'])->middleware('auth')->name('personal.area');
 
 // add profile
 Route::get('/index/create', [ProfileController::class, 'create'])->middleware('auth')->name('personal.create');
 Route::post('/index/create', [ProfileController::class, 'store'])->middleware('auth')->name('personal.store');
+
+// update profiles
+Route::get('/index/change/profile', [ProfileController::class, 'showProfile'])->middleware('auth')->name('personal.show.profile');
+Route::post('/index/change/profile', [ProfileController::class, 'updateProfileData'])->middleware('auth')->name('personal.show.profile.store');
 
 /**
  * user data in profile

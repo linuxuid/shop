@@ -9,10 +9,10 @@ use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
-    public function index($id)
+    public function index()
     {
-        $users = User::find($id);
-        return view('profile.index')->with('users', $users);
+        $profile = Profile::all();
+        return view('profile.index')->with('profile', $profile);
     }
 
     public function create()
@@ -55,7 +55,7 @@ class ProfileController extends Controller
     {
         $attributes = $request->validate([
             'name' => 'required|min:5|max:20',
-            'username' => ['required', Rule::exists('users', 'username')],
+            'username' => ['required'],
             'email' => ['required', Rule::unique('users', 'email')],
             'phone' => 'required',
             'address' => 'required|max:255',
@@ -71,17 +71,28 @@ class ProfileController extends Controller
     /** This show profile 
      * @param Profile
      */
-    public function showProfile(Profile $profile)
+    public function showProfile()
     {
-        
+        return view('profile.shower');
     }
 
     /** This update profile data
      * @param Request
      * @param Profile
      */
-    public function update(Request $request, Profile $profile)
+    public function updateProfileData(Request $request, Profile $profile)
     {
+        $request->validate([
+            'user_id' => 'in:' . auth()->user()->id,
+            'title' => ['required', 'max:255'],
+            'name' => ['required', 'max:255'],
+            'email' => ['required', 'max:255'],
+            'phone' => ['required', 'max:255'],
+            'address' => ['required', 'max:255'],
+            'comment' => ['required', 'max:255']
+        ]);
 
+        $profile->update($request->all());
+        return redirect()->route('personal.show.profile')->with('success', 'your user profile has been changed');
     }
 }
