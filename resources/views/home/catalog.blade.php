@@ -12,8 +12,8 @@
         @foreach (App\Models\Category::all() as $item)
         <h2>{{ $item->name }}</h2>
         @foreach (App\Models\Product::all() as $product)
-            @if ($product->id == $item->id)
-            <p>{{ $product->slug }}</p>                
+            @if ($product->category_id == $item->id)
+            <p><a class="subs" href="/catalog/subcatalog/{{ $product->id }}">{{ $product->slug }}</a></p> 
             @endif
     @endforeach
     @endforeach    

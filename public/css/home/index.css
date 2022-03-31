@@ -8,3 +8,17 @@
     line-height: 30px;
     text-indent: 20px;
 }
+
+.left p > a {
+    text-decoration: none;
+    font-size: 17px;
+    color: blue;
+    font-weight: bold;
+}
+
+.left p > a:hover {
+    color: red;
+    text-decoration: underline;
+    transition: 0.4s;
+    
+}

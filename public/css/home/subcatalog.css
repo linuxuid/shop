@@ -2,6 +2,11 @@ main .left h2{
     font-size: 25px;
 }
 
+
+.content {
+    float: right;
+}
+
 .content form {
     display: flex;
 }

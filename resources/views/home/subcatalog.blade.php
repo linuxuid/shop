@@ -13,8 +13,8 @@
         @foreach (App\Models\Category::all() as $item)
         <h2>{{ $item->name }}</h2>
         @foreach (App\Models\Product::all() as $product)
-            @if ($product->id == $item->id)
-            <p>{{ $product->slug }}</p>                
+            @if ($product->category_id == $item->id)
+            <p><a class="subs" href="/catalog/subcatalog/{{ $product->id }}/{{ $product->id }}">{{ $product->slug }}</a></p>              
             @endif
     @endforeach
     @endforeach  
@@ -24,6 +24,7 @@
         <h2>Products</h2>
         <hr>
         @foreach ($categories->products as $category)
+        <div class="catalogs"> 
             <span>{{ $category->slug }}</span>
             <img src="/img/web.jpg" width="400" alt="" class="img-fluid">
             <form action="/catalog/subcatalog/{{ $category->id }}/{{ $category->id }}">
@@ -36,6 +37,7 @@
                     Follow
                 </button>
             </form>
+        </div>    
         @endforeach
     </div>
 </main>

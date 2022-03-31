@@ -10,9 +10,6 @@
 
 @section('content')
 <main>
-    <div class="left">
-    </div>
-
     <div class="content">
         <h2>{{ $products->slug }}</h2>
         <img src="/img/download.png" width="400px" height="400px" alt="" class="img-fluid">

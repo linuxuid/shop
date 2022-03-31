@@ -3,6 +3,10 @@
    width: 450px;
 }
 
+.content .catalogs span{
+    margin-top: 60px;
+}
+
 .content span {
     display: block;
     margin-top: 20px;
