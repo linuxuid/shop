@@ -26,7 +26,7 @@
                     <style>
                         header .menu_left {
                             position: relative;
-                            left: 500px;
+                            left: 400px;
                             bottom: 29px
                         }
                     </style>
@@ -37,7 +37,7 @@
                     header .menu_left {
                         position: relative;
                         left: 900px;
-                        bottom: 90px;
+                        bottom: 110px;
                     }
                     
                     header .menu_right .logout {
