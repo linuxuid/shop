@@ -1,119 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-@section('links')
-    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">        
-@show
-    <title>App name - @yield('title', 'shop')</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('shop', 'shop') }}</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div class="wrapper">
-    @section('header')
-        <header>
-            <nav class="menu_right">
-                <a href="/">Home</a>
-                <a href="/catalog">Catalog</a>
-                <a href="/basket">Basket</a>
-            @if(auth()->user())
-                <a href="/index">My Profile</a>
-            @else
-                <a href="/index">My Profile</a>
-            @endif
-                {{-- IF NOT AUTH STAT STYLE --}}
-                    <style>
-                        header .menu_left {
-                            position: relative;
-                            left: 493px;
-                            bottom: 29px
-                        }
-                    </style>
-                {{-- IF NOT AUTH END STYLE --}}
-            @auth
-            {{-- IF AUTH START STYLE --}}
-                <style>
-                    header .menu_left {
-                        position: relative;
-                        left: 900px;
-                        bottom: 90px;
-                    }
-                    
-                    header .menu_right .logout {
-                        position: relative;
-                        left: 390px;
-                        bottom: 20px;
-                    }
-                </style>
-            {{-- IF AUTH END STYLE --}}
-                <span class="welcome_back">Hello!, <span class="user">{{ auth()->user()->name }}!</span></span>
-                
-            @if (auth()->user()->name == 'admin')
-                    {{-- IF ADMIN AUTH START STYLE --}}
-                        <style>
-                            header .menu_right .logout {
-                                position: relative;
-                                left: 600px;
-                                bottom: 20px;
-                            }
-                        </style>
-                    {{-- IF ADMIN AUTH END STYLE --}}
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('shop', 'shop') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                <a href="{{ route('admin.index') }}">control panel</a>
-            @endif
-                <div class="logout">
-                    <form method="POST" action="{{ route('session.destroy') }}">
-                        @csrf
-                        <button type="submit">Log Out</button>
-                    </form>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav me-auto">
+
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
                 </div>
-            @else
-                <a href="/register">register</a>
-                <a href="/login">sign-up</a>
-            </nav>
-            @endauth
-
-            <nav class="menu_left">
-                <div class="search">
-                    <form action="" method="GET">
-                        <input name="search" type="text" placeholder="search...">
-                        <button>
-                            search!
-                        </button>
-                    </form>
-                </div>
-            </nav>
-
-        </header>
-   @show
-    
-   @section('content')    
-        <main>
-            <div class="left">
-                {{-- left sidebar --}}
             </div>
+        </nav>
 
-            <div class="content">
-                {{-- main content --}}
-            </div>
+        <main class="py-4">
+            @yield('content')
         </main>
-    @show    
-
-    @section('footer')
-        <footer>
-            <div class="footer_menu">
-                <a href="#">FAQ</a> |
-                <a href="#">Latests news</a> |
-                <a href="#">jobs</a> |
-                <a href="#">funshine@example.com</a> |
-                <a href="#">+7(951)-065-93-05</a>
-            </div>
-            <div class="footer_text">
-                <p><small>&copy; Copyright 2022, Example Corporation, Author:funshine</small> </p>
-            </div>
-        </footer>
-    @show
     </div>
 </body>
 </html>

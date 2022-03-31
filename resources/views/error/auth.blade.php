@@ -23,7 +23,7 @@
         }
     </style>
 
-    <p>Please, log in <a href="{{ route('session.create') }}">Log in</a></p>
-    <p>Or register <a href="{{ route('users') }}">Register</a></p>
+    <p>Please, log in <a href="/login">Log in</a></p>
+    <p>Or register <a href="/register">Register</a></p>
 </body>
 </html>

@@ -11,6 +11,7 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsersController;
 use Faker\Guesser\Name;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -115,3 +116,11 @@ Route::get('/index/show', [ProfileController::class, 'showUserData'])->middlewar
 // update user data in profile
 Route::post('/index/show', [ProfileController::class, 'updateUserData'])->middleware('auth')->name('personal.show.store');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

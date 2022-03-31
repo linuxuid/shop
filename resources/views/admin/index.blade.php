@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.main')
 
 @section('links')
-    <link rel="stylesheet" href="{{ asset('/css/app.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('/css/main.css') }}"> 
     <link rel="stylesheet" href="{{ asset('/css/admin/index.css') }}">
 @endsection
 
@@ -53,7 +53,7 @@
         <a href="{{ route('admin.create') }}">control panel</a>
         <nav class="menu_left">
             <div class="logout">
-                <form method="POST" action="{{ route('session.destroy') }}">
+                <form method="POST" action="/logout">
                     @csrf
                     <button type="submit">Log Out</button>
                 </form>
