@@ -1,6 +1,22 @@
+.background {
+    background-color: #e5eff4;;
+}
+
 body {
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.65;
+}
+
+.wrapper {
+    width: 1300px;
+}
+
+.wrapper {
+    background-color: #fff;
+    /* border: 10px solid #fff; */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .wrapper {
