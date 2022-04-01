@@ -8,8 +8,8 @@ use App\Models\Product;
 
 class HomePageController extends Controller
 {
-    public function index(){
-
+    public function index()
+    {
         return view('home.index');
     }
 
@@ -38,5 +38,19 @@ class HomePageController extends Controller
         return view('home.products',[
             'products' => $product
         ]);
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search') ?? "";
+        if($search != ""){
+            $posts = Category::query()
+            ->where('name', 'like', "%{$search}%")
+            ->orWhere('slug', 'like', "%{$search}%");
+            return view('search.search', ['posts' => $posts->get()]);
+        } else {
+            abort(404);
+        }
+        
     }
 }

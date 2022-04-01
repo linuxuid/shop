@@ -70,7 +70,7 @@
                 @enderror
                 <button>
                     SUBMIT
-                </button>                
+                </button>  
             @endif
         @endforeach
         </form>

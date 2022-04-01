@@ -1,0 +1,45 @@
+.left h2 {
+    font-size: 25px;
+}
+
+.left p > a {
+    color: blue;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.left p > a:hover {
+    color: red;
+    text-decoration: underline;
+    transition: 0.3s;
+}
+
+.content .post_list .slug  > a{
+    color: red;
+}
+
+main .content {
+    height: 100%;
+}
+
+.content .post_list {
+    float: left;
+}
+
+.content .post_list {
+    width: 310px;
+    margin: 6px;
+    padding: 2px;
+}
+
+.content .post_list h3 {
+    font-size: 14px;
+    text-align: center;
+}
+
+.content .post_list .search_btn {
+    width: 300px;
+    background: rgb(38, 211, 38);
+    border: none;
+}

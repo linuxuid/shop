@@ -25,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/search/', [HomePageController::class, 'search'])->name('search');
+
 /**
  * error auth
  */
@@ -38,7 +40,7 @@ Route::get('/error', function(){
 Route::get('/', [HomePageController::class, 'index'])->name('home.index');
 Route::get('/catalog', [HomePageController::class, 'catalog']);
 Route::get('/catalog/subcatalog/{id}', [HomePageController::class, 'subCatalog'])->name('catalog.product');
-Route::get('/catalog/subcatalog/{id}/{id_product}', [HomePageController::class, 'products']);
+Route::get('/catalog/subcatalog/{id}/{id_product}', [HomePageController::class, 'products'])->name('catalog.subcatalog.subcatalog');
 
 /*
  * basket directory

@@ -9,7 +9,7 @@
 @show
     <title>App name - @yield('title', 'shop')</title>
 </head>
-<body>
+<body class="background">
     <div class="wrapper">
     @section('header')
         <header>
@@ -76,7 +76,7 @@
 
             <nav class="menu_left">
                 <div class="search">
-                    <form action="" method="GET">
+                    <form action="{{ route('search') }}" method="GET">
                         <input name="search" type="text" placeholder="search...">
                         <button>
                             search!

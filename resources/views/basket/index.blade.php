@@ -5,6 +5,72 @@
     <link rel="stylesheet" href="{{ asset('/css/basket/index.css') }}">      
 @show
 
+@section('header')
+<header>
+    <nav class="menu_right">
+        <a href="/">Home</a>
+        <a href="/catalog">Catalog</a>
+        <a href="/basket">Basket</a>
+    @if(auth()->user())
+        <a href="/index">My Profile</a>
+    @else
+        <a href="/index">My Profile</a>
+    @endif
+        {{-- IF NOT AUTH STAT STYLE --}}
+            <style>
+                header .menu_left {
+                    position: relative;
+                    left: 400px;
+                    bottom: 29px
+                }
+            </style>
+        {{-- IF NOT AUTH END STYLE --}}
+    @auth
+    {{-- IF AUTH START STYLE --}}
+        <style>
+            header .menu_left {
+                position: relative;
+                left: 900px;
+                bottom: 110px;
+            }
+            
+            header .menu_right .logout {
+                position: relative;
+                left: 500px;
+                bottom: 20px;
+            }
+        </style>
+    {{-- IF AUTH END STYLE --}}
+        <span class="welcome_back">Hello!, <span class="user">{{ auth()->user()->name }}!</span></span>
+        
+    @if (auth()->user()->name == 'admin')
+            {{-- IF ADMIN AUTH START STYLE --}}
+                <style>
+                    header .menu_right .logout {
+                        position: relative;
+                        left: 1150px;
+                        bottom: 25px;
+                    }
+                </style>
+            {{-- IF ADMIN AUTH END STYLE --}}
+
+        <a href="{{ route('admin.index') }}">control panel</a>
+    @endif
+        <div class="logout">
+            <form method="POST" action="/logout">
+                @csrf
+                <button type="submit">Log Out</button>
+            </form>
+        </div>
+    @else
+        <a href="/register">register</a>
+        <a href="/login">sign-up</a>
+    </nav>
+    @endauth
+
+</header>
+@endsection
+
 @section('content')
 <main>
 <div class="content">
